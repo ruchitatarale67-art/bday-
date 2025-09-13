@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Happy Birthday Pratiksha 🎂</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: "Poppins", sans-serif;
+      text-align: center;
+      background: linear-gradient(135deg, #ffdde1, #ee9ca7, #a1c4fd, #c2e9fb);
+      background-size: 400% 400%;
+      animation: gradientBG 12s ease infinite;
+      color: #4a2a4a;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      padding: 20px;
+      overflow: hidden;
+    }
+
+    @keyframes gradientBG {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    h1 {
+      font-size: 32px;
+      margin: 15px 0;
+      color: #fff;
+      text-shadow: 2px 2px 8px rgba(0,0,0,0.3);
+    }
+
+    img {
+      width: 220px;
+      height: auto;
+      border-radius: 20px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.4);
+      margin-bottom: 15px;
+      border: 4px solid #fff;
+    }
+
+    /* Cake */
+    .cake {
+      position: relative;
+      width: 160px;
+      height: 120px;
+      margin: 20px auto;
+      background: #ffb6c1;
+      border-radius: 0 0 16px 16px;
+      box-shadow: inset 0 -8px #ff99aa;
+    }
+    .cake::before {
+      content: "";
+      position: absolute;
+      top: -40px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 40px;
+      background: #ffe6e6;
+      border-radius: 8px;
+      box-shadow: inset 0 -6px #ffccd5;
+    }
+    .candle {
+      position: absolute;
+      top: -50px;
+      width: 10px;
+      height: 40px;
+      background: #fff;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+    .flame {
+      position: absolute;
+      top: -15px;
+      left: 50%;
+      width: 16px;
+      height: 16px;
+      background: radial-gradient(circle, #fff79a, #ff9900);
+      border-radius: 50%;
+      transform: translateX(-50%);
+      animation: flicker 1s infinite;
+      box-shadow: 0 0 20px 6px rgba(255,200,0,0.8);
+    }
+    @keyframes flicker {
+      0%, 100% { transform: translateX(-50%) scale(1); opacity: 0.9; }
+      50% { transform: translateX(-50%) scale(1.2); opacity: 1; }
+    }
+
+    /* Buttons */
+    button {
+      background: #ff4d79;
+      border: none;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 25px;
+      cursor: pointer;
+      margin: 10px 5px;
+      font-size: 16px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      transition: background 0.3s;
+    }
+    button:hover {
+      background: #d63384;
+    }
+
+    /* Balloons */
+    .balloon {
+      position: absolute;
+      bottom: -150px;
+      width: 40px;
+      height: 55px;
+      background: #ff6b81;
+      border-radius: 50%;
+      animation: float 8s infinite ease-in;
+    }
+    .balloon:before {
+      content: "";
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      width: 2px;
+      height: 40px;
+      background: #444;
+      transform: translateX(-50%);
+    }
+    .balloon:nth-child(2) { left: 20%; background: #ffd700; animation-delay: 2s; }
+    .balloon:nth-child(3) { left: 50%; background: #00c3ff; animation-delay: 4s; }
+    .balloon:nth-child(4) { left: 70%; background: #adff2f; animation-delay: 6s; }
+    .balloon:nth-child(5) { left: 90%; background: #ff69b4; animation-delay: 8s; }
+    @keyframes float {
+      0% { transform: translateY(0); opacity: 0.9; }
+      50% { transform: translateY(-400px); opacity: 1; }
+      100% { transform: translateY(0); opacity: 0.9; }
+    }
+
+    /* Confetti */
+    .confetti {
+      position: absolute;
+      width: 8px;
+      height: 8px;
+      background: #fff;
+      top: -10px;
+      animation: fall 6s linear infinite;
+    }
+    @keyframes fall {
+      0% { transform: translateY(0) rotate(0deg); }
+      100% { transform: translateY(100vh) rotate(360deg); }
+    }
+  </style>
+</head>
+<body>
+
+  <img src="pratiksha bday.jpg" alt="Happy Birthday">
+  <h1>🎉 Happy Birthday Pratiksha 🎉</h1>
+
+  <div class="cake">
+    <div class="candle">
+      <div class="flame"></div>
+    </div>
+  </div>
+
+  <button onclick="playSong()">▶ Play Music</button>
+  <button onclick="pauseSong()">⏸ Pause</button>
+
+  <!-- Birthday music (royalty-free from Pixabay) -->
+  <audio id="song" preload="auto">
+    <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_birthday.mp3?filename=happy-birthday-118879.mp3" type="audio/mpeg">
+  </audio>
+
+  <!-- Balloons -->
+  <div class="balloon"></div>
+  <div class="balloon"></div>
+  <div class="balloon"></div>
+  <div class="balloon"></div>
+  <div class="balloon"></div>
+
+  <!-- Confetti (cloned with JS) -->
+  <script>
+    const song = document.getElementById("song");
+    function playSong(){ song.play(); }
+    function pauseSong(){ song.pause(); }
+
+    // Generate confetti
+    for (let i = 0; i < 40; i++) {
+      const conf = document.createElement("div");
+      conf.className = "confetti";
+      conf.style.left = Math.random() * 100 + "vw";
+      conf.style.background = ["#ff4d79","#ffd700","#00c3ff","#adff2f","#ff69b4"][Math.floor(Math.random()*5)];
+      conf.style.animationDuration = (Math.random() * 3 + 3) + "s";
+      conf.style.animationDelay = Math.random() * 5 + "s";
+      document.body.appendChild(conf);
+    }
+  </script>
+
+</body>
+</html>
